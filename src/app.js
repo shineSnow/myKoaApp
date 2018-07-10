@@ -2,12 +2,15 @@ const koa = require('koa');
 const app = new koa();
 const fs = require('fs');
 const views = require('koa-views');
+const static = require('koa-static');
 const ejs = require('ejs');
 const path = require('path');
 const router = require('./router');
 
 console.log(__dirname + '/views')
 
+//静态文件
+app.use(static(path.join(__dirname,'/public')));
 //设置模板引擎
 app.use(views(__dirname + '/views',{
   map : {html:'ejs'}

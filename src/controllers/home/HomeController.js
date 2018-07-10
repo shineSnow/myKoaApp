@@ -1,5 +1,8 @@
 const mysql = require('../../db');
-const path = require('path');
+
+
+
+console.log(mysql);
 
 
 
@@ -7,9 +10,9 @@ class HomeCtroller {
 
   //首页展示
    indexPage() {
-    // let data = await mysql.query('select * from article_list');
       return async (ctx, next) => {
-          await ctx.render('index',{data:'hello'})
+        let data = await mysql.query('select * from article_list');
+          await ctx.render('index',{data})
       }
   }
 
